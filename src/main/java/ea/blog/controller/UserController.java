@@ -1,6 +1,5 @@
 package ea.blog.controller;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,7 +12,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ea.blog.model.Post;
 import ea.blog.model.User;
 import ea.blog.service.UserService;
 
@@ -203,8 +199,6 @@ public class UserController {
 		User user = restTemplate.getForObject("http://localhost:8080/rest/user/username/"+username, User.class);
 		
 		model.addAttribute("searchUser", user);
-
-		
 		return "profile";
 
 	}

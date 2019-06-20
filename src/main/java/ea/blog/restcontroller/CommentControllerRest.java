@@ -25,20 +25,14 @@ public class CommentControllerRest {
 
 	@GetMapping(value = "/comment/{commentId}")
 	public Comment getComment(@PathVariable int commentId) {
-
 		return commentService.getComment(commentId);
-
 	}
 	
-
 	@GetMapping(value = "/comment/post/{commentId}")
 	public List<Comment> getCommentForPost(@PathVariable int postId) {
-
 		return commentService. getCommentForPost(postId);
-
 	}
 	
-
 	@PostMapping(value = "/addcomment")
 	public Comment addComment(@RequestBody Comment comment) {
 
@@ -47,13 +41,11 @@ public class CommentControllerRest {
 		commentService.addComment(comment);
 
 		return comment;
-
 	}
 
 	@DeleteMapping(value = "/deletecomment/{id}")
 	public void deleteComment(@PathVariable int id) {
 		commentService.deleteCommentById(id);
-
 	}
 
 	@PutMapping(value = "/updatecomment")
@@ -61,8 +53,5 @@ public class CommentControllerRest {
 		comment.setUpdatedDate(new Date());
 		commentService.updateComment(comment);
 		return comment;
-
 	}
-	
-
 }

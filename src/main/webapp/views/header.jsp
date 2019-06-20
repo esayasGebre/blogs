@@ -11,7 +11,7 @@
 <body>
 <div class="header">
 MUM Blogs...
-<h3>Welcome to our blog.</h3>
+Welcome to our blog.
 <!-- <img src="resources/image/blog.jpg" alt="blog image"/> -->
 </div>
 

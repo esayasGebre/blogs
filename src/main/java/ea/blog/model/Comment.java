@@ -13,7 +13,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-
 @Entity
 public class Comment {
 	@Id 
@@ -36,8 +35,6 @@ public class Comment {
 	
 	public Comment(){}
 	
-	
-
 	public Comment(Date createdDate, Date updatedDate, String content, User owner, Post post, List<User> likes) {
 		super();
 		this.createdDate = createdDate;
@@ -48,7 +45,6 @@ public class Comment {
 		this.likes = likes;
 	}
 
-
 	public Comment(Date createdDate, Date updatedDate, String content, User owner, Post post) {
 		super();
 		this.createdDate = createdDate;
@@ -58,8 +54,6 @@ public class Comment {
 		this.post = post;
 		
 	}
-
-	
 
 	public int getId() {
 		return id;
@@ -116,8 +110,5 @@ public class Comment {
 	public void setLikes(List<User> likes) {
 		this.likes = likes;
 	}
-	
-	
-	
-	
+
 }

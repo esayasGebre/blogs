@@ -21,26 +21,31 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 public class User {
+	
 	@Id
 	@GeneratedValue
 	private int id;
+	
 	@Pattern(regexp="[A-Za-z]*", message="First Name can only contain letters")
 	private String firstname;
+	
 	@Pattern(regexp="[A-Za-z]*", message="Last Name can only contain letters")
 	private String lastname;
+	
 	@Column(nullable = true)
 	@Temporal(TemporalType.DATE)
+	
 	private Date dob;
 	private String sex;
 	private String role;
+	
 	@Column(unique = true, nullable = false, length = 50)
 	@NotBlank
 	@Size.List({ @Size(min = 3, message = "Username too short"), @Size(max = 25, message = "Username too long") })
 	private String username;
+	
 	@Column(nullable = false, length = 80)
     @Size.List({
             @Size(min = 6, message = "Password too short"),
@@ -48,6 +53,7 @@ public class User {
     })
     @NotBlank
 	private String password;
+	
 	private boolean enabled;
 
 	public boolean isEnabled() {
@@ -77,8 +83,7 @@ public class User {
 	@ManyToMany
 	private List<User> friends;
 
-	public User() {
-	}
+	public User() { }
 
 	public User(String firstname, String lastname, Date dob, String sex, String username, String password,
 			Address address, List<Post> posts, List<Comment> comments, List<Post> likedPosts,

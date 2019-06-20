@@ -124,11 +124,8 @@ public class Post {
 		return likes.size();
 	}
 	
-	
-	
 	public void setLikes(List<User> likes) {
 		this.likes = likes;
 	}
-	
 	
 }

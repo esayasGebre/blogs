@@ -9,6 +9,5 @@ import ea.blog.model.Comment;
 
 @Repository
 public interface CommentDao extends JpaRepository<Comment, Integer>{
-
 	List<Comment> findByPostId(int id); 
 }
