@@ -13,68 +13,53 @@ import ea.blog.model.User;
 @Transactional
 @Controller
 public class CommentService {
-	
+
 	@Autowired
 	private CommentDao commentDao;
-	
+
 	public CommentService() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Comment addComment(Comment comment)
-	{
+
+	public Comment addComment(Comment comment) {
 		return commentDao.save(comment);
 	}
-	
-	public Comment getComment(int id)
-	{
+
+	public Comment getComment(int id) {
 		return commentDao.findOne(id);
 	}
 
-	public void deleteComment(Comment comment)
-	{
+	public void deleteComment(Comment comment) {
 		commentDao.delete(comment);
 	}
-	
-	public int numberOfLikes(int id)
-	{
+
+	public int numberOfLikes(int id) {
 		return commentDao.findOne(id).getLikes().size();
 	}
-	
-	public Comment updateComment(Comment comment)
-	{
+
+	public Comment updateComment(Comment comment) {
 		return commentDao.save(comment);
 	}
-	
-	public void deleteCommentById(int id)
-	{
-		 commentDao.delete(id); 
-	}
-	
-	public List<Comment> getCommentForPost(int id)
-	{
-	
-		return commentDao.findByPostId(id);
-		
+
+	public void deleteCommentById(int id) {
+		commentDao.delete(id);
 	}
 
-	
-	public boolean statusLikeComment(User user, Comment comment)
-	{
+	public List<Comment> getCommentForPost(int id) {
+		return commentDao.findByPostId(id);
+	}
+
+	public boolean statusLikeComment(User user, Comment comment) {
 		return comment.getLikes().contains(user);
 	}
 
-	public Comment likeComment(User user, Comment comment)
-	{
+	public Comment likeComment(User user, Comment comment) {
 		comment.getLikes().add(user);
 		return commentDao.save(comment);
 	}
 
-	
-	public Comment unLikeComment(User user, Comment comment)
-	{
+	public Comment unLikeComment(User user, Comment comment) {
 		comment.getLikes().remove(user);
 		return commentDao.save(comment);
 	}
-	
 }

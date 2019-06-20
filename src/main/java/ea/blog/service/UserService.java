@@ -13,6 +13,7 @@ import ea.blog.model.User;
 @Service
 @Transactional()
 public class UserService {
+	
 	@Autowired
 	private UserDao userDao;
 
@@ -22,7 +23,6 @@ public class UserService {
 
 	public User getUser(int id) {
 		return userDao.findOne(id);
-
 	}
 
 	public User addUser(User user) {
@@ -62,7 +62,6 @@ public class UserService {
 			user.setUsername(username);
 			userDao.saveAndFlush(user);
 		}
-
 	}
 
 	public User currentUser() {
@@ -72,7 +71,6 @@ public class UserService {
 
 	public void changeProfileInfo(User user) {
 		updateUser(user);
-
 	}
 
 	public boolean validateUser(String username, String password) {
@@ -87,7 +85,5 @@ public class UserService {
 	public void changePassword(User user, String password) {
 		user.setPassword(password);
 		userDao.saveAndFlush(user);
-
 	}
-
 }

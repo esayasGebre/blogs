@@ -6,10 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -18,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 import ea.blog.model.Post;
 import ea.blog.model.PostProxy;
 import ea.blog.model.User;
-import ea.blog.service.CommentService;
 import ea.blog.service.PostService;
 import ea.blog.service.UserService;
 
@@ -29,9 +26,7 @@ public class HomeController {
 	@Autowired
 	private PostService postService;
 
-	 
-	
-	 @Autowired
+	@Autowired
 	private UserService userService;
 	 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
@@ -43,7 +38,6 @@ public class HomeController {
 		
 		List<Post> posts= (List<Post>) this.postService.getAllPost();
 		List<PostProxy> poxyposts = new ArrayList<PostProxy>();
-		
 		
 		for(Post post1: posts)
 		{
@@ -60,9 +54,7 @@ public class HomeController {
 			}
 			
 		}
-
 		model.addAttribute("posts",poxyposts);
-
 		return "home";
 	}
 	
@@ -93,11 +85,8 @@ public class HomeController {
 	
 	@RequestMapping(value="/deletePost", method=RequestMethod.POST)
 	public String deletePost(int postid, Model model){
-		
-
 		postService.deletePostById(postid);
 		//postService.deletePost(postService.getPost(postid));
-
 		return "redirect:/home";
 	}
 
@@ -105,7 +94,6 @@ public class HomeController {
 	@RequestMapping(value="/updatePost", method=RequestMethod.POST)
 	public String updatePost(int postid, String content, Model model){
 		
-
 		Post post=postService.getPost(postid);
 		post.setContent(content);
 		postService.updatePost(post);
@@ -121,11 +109,9 @@ public class HomeController {
 		RestTemplate restTemplate = new RestTemplate();
 		Post post = restTemplate.getForObject("http://localhost:8080/rest/post/get/"+postid, Post.class);
 
-		
 		//Post post=postService.getPost(postid);
 		post.setContent(content);
 		postService.updatePost(post);
-
 		return "redirect:/home";
 	}
 

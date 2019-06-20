@@ -1,12 +1,10 @@
 package ea.blog.restcontroller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,13 +56,11 @@ public class UserControllerRest {
 	@GetMapping(value = "/user/{userId}")
 	public User getUser(@PathVariable int userId) {
 		return userService.getUser(userId);
-
 	}
 	
 	@GetMapping(value = "/user/username/{uname}")
 	public User getUserByUsername(@PathVariable String uname) {
 		return userService.findByUsername(uname);
-
 	}
 
 	@GetMapping(value = "/users")
@@ -81,7 +77,6 @@ public class UserControllerRest {
 			return user;
 		}
 		userService.addUser(user);
-
 		return user;
 	}
 
@@ -94,7 +89,6 @@ public class UserControllerRest {
 		}
 		userService.changeProfileInfo(user);
 		redirectAttributes.addFlashAttribute("success", true);
-
 		return user;
 	}
 }

@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -83,13 +82,10 @@ public class CommentController {
 	public String updateComment(int commentid, String content, Model model) {
 	
 		//Comment comment = commentService.getComment(commentid);
-
 		
 		RestTemplate restTemplate = new RestTemplate();
 		Comment comment = restTemplate.getForObject("http://localhost:8080/rest/comment/"+commentid, Comment.class);
 		//model.addAttribute("products", products);
-
-		
 		
 		comment.setUpdatedDate(new Date());
 		comment.setContent(content);

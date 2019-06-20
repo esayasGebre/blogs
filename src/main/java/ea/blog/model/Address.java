@@ -12,8 +12,6 @@ public class Address {
 	
 	public Address(){}
 	
-	
-
 	public Address(String city, String state, String country, String phone, String email) {
 		super();
 		this.city = city;
@@ -22,8 +20,6 @@ public class Address {
 		this.phone = phone;
 		this.email = email;
 	}
-
-
 
 	public String getCity() {
 		return city;
@@ -64,7 +60,5 @@ public class Address {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+
 }
