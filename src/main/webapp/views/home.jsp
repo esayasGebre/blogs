@@ -27,40 +27,32 @@
 
 <jsp:useBean id="today" class="java.util.Date" scope="page" />
 <%-- <fmt:formatDate value="${today}" pattern="MM.dd.yyyy" /> --%>
-
-	<div class="left">
-		<p class="effect">Welcome: ${currentUser.firstname} </p>
-		<hr>
-		<a href="/edit_profile" >Edit Profile</a>
-		<hr>
-		<a href="/settings" >Account Setting</a>
-		<hr>
-	</div>
 	<div class="middle">
-	<div>
-		<h4>Blogger Name: ${currentUser.firstname}</h4>
-		<h4>Current date: ${today} </h4>
-	<hr>
-	</div>
-		<div class="newPostContainer">
 		
+		<div>
+			<h5>Login time: ${today}, Account owner: ${currentUser.firstname}</h5>
+		</div>
+
+		<dev class="midDiv">
+			<a href="/edit_profile" >Edit Profile</a> | <a href="/settings" >Account Setting</a> | <a style="color: red" href="logout">Logout</a>
+		</dev>
+		
+		<hr>
+
+		<div class="newPostContainer">
 			<form action="/app/post/addpost" method="post">
 				<p class="effect">Post Title:</p>
 				<input type="text" name="title" class="form-control"/>
 				<input type="hidden" name="userid" value="${currentUser.id}" />
 				
-				<p class="effect">Post Content:</p>
-				<textarea class="form-control" name="content" rows="6" id="postContainer"></textarea>
-				<div class="position"><input type="submit" value="post" class="btn btn-info btn-sm"/></div>
+				<label><p class="effect">Post Content:</p></label>
+				<textarea class="form-control" name="content" rows="3" id="postContainer"></textarea>
+				<div class="position"><input type="submit" value="post" class="btn btn-info btn-sm btn-block"/></div>
 			<input type="hidden" name= "${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
-
 		</div>
-		
-	
+
 		<div class="listPostContainer">
-
-
 			<c:forEach var="postp" items="${posts}">
 			<hr>
 				<div class="postContainer">
@@ -75,10 +67,6 @@
 						${postp.post.content} 
 					<hr>
 				
-<!-- 
-
-
- -->
 					<c:if test="${postp.post.owner.id eq currentUser.id}">
 						<form action="deletePost" method="post">
 							<input type="hidden" name="userid" value="${currentUser.id}" /> 
@@ -191,16 +179,8 @@
 
 
 	</div>
-	<div class="right">right
-	
-	 <a style="color: red" href="logout">Logout</a>
-	<hr>
-	</div>
-
 <script src="resources/js/script.js" type="text/javascript" ></script>
-
 </body>
-
 </html>
 
 
